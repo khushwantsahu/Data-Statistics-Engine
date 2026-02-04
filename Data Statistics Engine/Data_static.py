@@ -49,7 +49,7 @@ class DataStatistics:
 
 
 class Normalization:
-    #normalization method to normalize data min max formula
+    #method to normalize data using min max formula
     def min_max_formula(self):
         print(f"Data normalize using min-max Normalization along column:-")
         normalize = (data - data.min(axis=0))/(data.max(axis=0) - data.min(axis=0))
@@ -59,7 +59,7 @@ class Normalization:
         normalize = (data - data.min(axis=1,keepdims=True))/(data.max(axis=1,keepdims=True) - data.min(axis=1,keepdims=True))
         print(np.round(normalize,2))
 
-    #normalization method to normalize data using z-score formula
+    #method to normalize data using z-score formula
     def z_score_formula(self):
         print(f"\n\nData normalize using Z-Score Normalization:-")
         normalize = (data - data.mean(axis=0))/(data.std(axis=0))
@@ -67,6 +67,7 @@ class Normalization:
 
 
 class Graph:
+    #simple line Graph x y values
     def line_plot(self,x,y):
         plt.xlabel("x label")
         plt.ylabel("y label")
@@ -74,12 +75,14 @@ class Graph:
         plt.plot(x,y)
         plt.show()
 
+    #multiple line Graph x y,z values
     def muliple_line(self , x,y,z):
         plt.plot(x,y,label='line1')
         plt.plot(x,z,label='line2')
         plt.legend()
         plt.show()
 
+    #Dot chart 
     def scatter(self,x,y):
         plt.xlabel('x')
         plt.ylabel('y')
@@ -87,13 +90,15 @@ class Graph:
         plt.scatter(x,y)
         plt.show()
 
+    #histogram graph 
     def histogram(self,x):
         plt.xlabel('x')
         plt.ylabel('y')
         plt.title('Histogram')
         plt.hist(x)
         plt.show()
-    
+
+    #bar chart
     def bar_chart(self,catagory,value):
         plt.xlabel('catagory')
         plt.ylabel('value')
@@ -101,6 +106,7 @@ class Graph:
         plt.bar(catagory,value)
         plt.show()
 
+#main function
 def main():
     datastatistics = DataStatistics()
     datastatistics.display()
@@ -130,4 +136,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
