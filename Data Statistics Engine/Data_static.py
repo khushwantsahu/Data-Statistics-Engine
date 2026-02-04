@@ -2,10 +2,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
+#matrix of size 5*5 with random integer number
 data = np.random.randint(1,101,size=(5,5))
+#file in csv formate
 file = "Data.csv"
 
 class DataStatistics:
+    #an __init__ method save the data in file
     def __init__(self):
         try:
             if os.path.exists(file):
@@ -16,7 +19,7 @@ class DataStatistics:
         except Exception as error:
             print(error)
         
-
+    #display method to display the data
     def display(self):
         try:
             if os.path.exists(file):
@@ -27,6 +30,7 @@ class DataStatistics:
         except Exception as error:
             print(error)
 
+    #calculate method to calculate mean standard deviation min and max
     def calculate(self):
         mean = data.mean(axis=1)
         mean = np.round(mean,2)
@@ -37,7 +41,6 @@ class DataStatistics:
         min = data.min(axis=1)
         max = data.min(axis=1)
 
-        #print(f"\nFile data are :-\n{data}")
         print(f"Minimum number of each row : {min}")
         print(f"Maximum number of each row : {max}")
         print(f"mean  of each row : {mean}")
@@ -46,6 +49,7 @@ class DataStatistics:
 
 
 class Normalization:
+    #normalization method to normalize data min max formula
     def min_max_formula(self):
         print(f"Data normalize using min-max Normalization along column:-")
         normalize = (data - data.min(axis=0))/(data.max(axis=0) - data.min(axis=0))
@@ -55,6 +59,7 @@ class Normalization:
         normalize = (data - data.min(axis=1,keepdims=True))/(data.max(axis=1,keepdims=True) - data.min(axis=1,keepdims=True))
         print(np.round(normalize,2))
 
+    #normalization method to normalize data using z-score formula
     def z_score_formula(self):
         print(f"\n\nData normalize using Z-Score Normalization:-")
         normalize = (data - data.mean(axis=0))/(data.std(axis=0))
@@ -125,3 +130,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
